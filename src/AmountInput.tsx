@@ -1,18 +1,18 @@
-import Input, {InputProps} from "./Input"
+import {ChangeEventHandler} from "react";
 
+export type InputProps = {
+  value: string;
+  onChange: ChangeEventHandler<HTMLInputElement>;
+  className?: string;
+  placeholder?: string;
+};
 
-export default function AmountInput(props:InputProps){
-	return (
-		<div className=" flex items-center bg-blue-950 border border-white/10 rounded-lg ">
-			<Input 
-
-			placeholder="Amount"
-			className="text-center border-0 w-28 bg-transparent text-xl"
-			value={props.value} 
-			onChange={props.onChange}
-			/>
-			
-			<span className="text-white/50 p-4">USD</span>
-		</div>
-	)
+export default function Input(props:InputProps) {
+  return (
+    <input type="text"
+           placeholder={props.placeholder || ''}
+           className={"border border-white/10 bg-blue-950 p-2 " + props.className}
+           value={props.value}
+           onChange={props.onChange}/>
+  );
 }
